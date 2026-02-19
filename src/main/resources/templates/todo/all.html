@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <div class="container" th:fragment="all">
+  <body>
+
+    <div th:insert="~{include/partial :: head}"></div>
+    <!-- <div th:insert="~{include/navbar :: navbar}" class="mt-3"></div> -->
+    <div class="d-flex justify-content-between mt-4 mb-2">
+       
+        <h3>To Do Lists</h3>
+        <div class="d-flex justify-content-end">
+        <a href="/todo/add" class="btn btn-success btn-sm">
+        <i class="fa fa-plus"></i>Add</a>
+            <div class="dropdown btn btn-sm ">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Filter
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="/todo">All</a></li>
+    <li><a class="dropdown-item" href="/todo/filter/true">Completed</a></li>
+    <li><a class="dropdown-item" href="/todo/filter/false">Not Complete</a></li>
+  </ul>
+</div>
+        </div>
+    </div>
+    <th:block th:each="todo:${todos}">
+    <div class="card mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-9">
+                    <!-- <span th:text="${todo.title}"></span> -->
+                     <span th:text="${todo.title}" th:style="${todo.completed} ? 'text-decoration: line-through; color: gray;' : ''"></span>
+
+                </div>
+                <div class="col-md-3 d-flex justify-content-end">
+                    <!-- <a th:href="@{todo/toggle/{id}(id=${todo.id})}" th:attr="class=${todo.completed?'btn btn-primary':'btn btn-danger'}">
+                        <i class="fa fa-check"></i>
+                    </a> -->
+                    
+
+<a th:href="@{todo/toggle/{id}(id=${todo.id})}" class="btn btn-sm btn-outline-secondary">
+    <i class="fa fa-check"></i>
+</a>
+                 <a th:href="@{todo/edit/{id}(id=${todo.id})}" class="btn btn-warning btn-sm ms-2">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a th:href="@{todo/drop/{id}(id=${todo.id})}" class="btn btn-danger btn-sm ms-2">
+                        <i class="fa fa-trash"></i>
+                    </a>   
+                </div>
+            </div>
+        </div>
+    </div>
+    </th:block>
+  </body>
+  </div>
+</html>

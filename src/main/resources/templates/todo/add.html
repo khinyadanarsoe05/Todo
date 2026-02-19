@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create Todo</title>
+    <div th:replace="~{include/partial :: head}"></div>
+</head>
+
+<body class="bg-light">
+<div class="container mt-5">
+    <div th:replace="~{include/navbar :: navbar}"></div>
+
+    <!-- Title + Back -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 >Create New To Do</h4>
+
+        <a href="/todo" class="btn btn-outline-success">
+            <i class="fa fa-arrow-left"></i> Back
+        </a>
+    </div>
+
+    <!-- Centered Form -->
+    <div class="row justify-content-center">
+        <div class="">
+
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body p-4">
+
+                    <form action="/todo/add" method="post">
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Enter To Do Title
+                            </label>
+
+                            <input type="text"
+                                   name="title"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter your task..."
+                                   required>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit"
+                                    class="btn btn-primary px-4">
+                                Confirm
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
